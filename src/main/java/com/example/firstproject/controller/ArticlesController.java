@@ -4,12 +4,14 @@ import com.example.firstproject.dto.ArticleForm;
 import com.example.firstproject.entity.Article;
 import com.example.firstproject.repository.ArticleRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.tomcat.util.net.TLSClientHelloExtractor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @Slf4j //로깅을 위한 어노테이션
@@ -23,7 +25,7 @@ public class ArticlesController {
         return "articles/new";
     }
 
-    @PostMapping("/articles/create")
+/*    @PostMapping("/articles/create")
     public String createArticle(ArticleForm form) {
         //System.out.println(form.toString());
         log.info(form.toString());
@@ -38,7 +40,7 @@ public class ArticlesController {
         //System.out.println(saved.toString());
         log.info(saved.toString());
         return "";
-    }
+    }*/
 
     @GetMapping("hello-mvc")
     public String helloSpring(@RequestParam("name") String name, Model model)
@@ -46,4 +48,31 @@ public class ArticlesController {
         model.addAttribute("name", name);
         return "hello-template";
     }
+
+    @GetMapping("hello-string")
+    @ResponseBody
+    public String helloSpring(@RequestParam("name") String name) {
+        return "hello " + name;
+    }
+
+    @GetMapping("hello-api")
+    @ResponseBody
+    public Article helloApi(@RequestParam("name") String name) {
+        Article article = new Article();
+        article.setName(name);
+        return article;
+    }
+
+    static class Article {
+        private String name;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+    }
+    
 }
