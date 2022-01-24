@@ -3,6 +3,7 @@ package com.example.firstproject.domain;
 public class Member {
     private Long id;
     private String name;
+    private String age;
 
     public Long getId() {
         return id;
@@ -18,5 +19,12 @@ public class Member {
 
     public void setName(String name) {
         this.name = name;
+    }
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
     }
 }
