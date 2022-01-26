@@ -3,10 +3,12 @@ package com.example.firstproject.service;
 import com.example.firstproject.domain.Member;
 import com.example.firstproject.repository.MemberRepository;
 import com.example.firstproject.repository.MemoryMemberRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class MemberService {
 
     private final MemberRepository memberRepository;
