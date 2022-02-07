@@ -1,11 +1,15 @@
 package com.example.firstproject.domain;
 
-public class Member {
-    private Long id;
-    private String name;
-    private String age;
-    private String sex;
+import javax.persistence.*;
 
+@Entity
+public class Member {
+
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    //@Column(name = "username"); 만약 컬럼명이 다르다면..
+    private String name;
     public Long getId() {
         return id;
     }
@@ -20,12 +24,5 @@ public class Member {
 
     public void setName(String name) {
         this.name = name;
-    }
-    public String getAge() {
-        return age;
-    }
-
-    public void setAge(String age) {
-        this.age = age;
     }
 }
