@@ -8,7 +8,10 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class TimeTraceAop {
-    @Around("execution(* com.example.firstproject..*(..))")
+
+    //AOP 적용전에는 Controller -> 실제 MemberService -> 실제 MemberRepository
+    //AOP 적용후에는 프록시Controller -> Controller -> 프록시 MemberService -> 실제 MemberService .....
+    @Around("execution(* com.example.firstproject..*(..))")  //적용 대상 설정
     public Object execute(ProceedingJoinPoint joinPoint) throws Throwable {
         long start = System.currentTimeMillis();
         System.out.println("START : " +joinPoint.toString());
