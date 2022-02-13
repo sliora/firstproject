@@ -32,10 +32,10 @@ public class SpringConfig {
         return new MemberService(memberRepository);
     }
 
-    @Bean
+/*    @Bean
     public TimeTraceAop timeTraceAop() {
         return new TimeTraceAop();
-    }
+    }*/
 
 /*    @Bean
     public MemberRepository memberRepository() {
