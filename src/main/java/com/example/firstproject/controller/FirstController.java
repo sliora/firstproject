@@ -19,4 +19,10 @@ public class FirstController {
         return "goodbye";
     }
 
+    @GetMapping("/good")
+    public String good(Model model) {
+        model.addAttribute("Test","홍길동");
+        return "good";
+    }
+
 }
